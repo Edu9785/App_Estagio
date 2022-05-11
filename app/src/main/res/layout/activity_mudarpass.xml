@@ -84,7 +84,7 @@
         android:layout_marginBottom="20dp"
         android:layout_marginnTop="42dp"
         android:backgroundTint="@color/design_default_color_secondary"
-        android:text="CRIAR" />
+        android:text="MUDAR" />
 
 
 </RelativeLayout>

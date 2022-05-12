@@ -8,7 +8,6 @@ import android.widget.Spinner;
 public class criarcontaActivity extends AppCompatActivity {
 
     private Spinner spinner_Tipo;
-
     private TipoAdapter tipoAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -72,38 +72,38 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:id="@+id/tipocargo"-->
-<!--        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/txtconfpass"-->
-<!--        android:layout_marginStart="40dp"-->
-<!--        android:layout_marginTop="34dp"-->
-<!--        android:layout_marginEnd="40dp"-->
-<!--        android:hint="Tipo de Cargo"-->
-<!--        android:layout-margin="80dp"-->
-<!--        android:textColorHint="@color/white">-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tipocargo"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtconfpass"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:hint="Tipo de Cargo"
+        android:textColorHint="@color/white">
 
-<!--        <AutoCompleteTextView-->
-<!--            android:id="@+id/filled_exposed"-->
-<!--            android:layout_width="230dp"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:layout_marginStart="40dp"-->
-<!--            android:layout_marginTop="25dp"-->
-<!--            android:layout_marginEnd="40dp"-->
-<!--            android:inputType="none" />-->
-<!--    </com.google.android.material.textfield.TextInputLayout>-->
+        <AutoCompleteTextView
+            android:id="@+id/filled_exposed"
+            android:layout_width="210dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/criarbtn"
         android:layout_width="wrap_content"
         android:layout_height="63dp"
-        android:layout_below="@id/txtconfpass"
+        android:layout_below="@id/tipocargo"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="40dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/design_default_color_secondary"
         android:text="CRIAR" />

@@ -2,6 +2,7 @@ package com.example.app_gestao_estagio;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,15 +17,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btnLogin = null;
-        TextView txtEsquecerPass = null, txtConta = null;
-        EditText txtusername = null, txtpassword = null;
+        Button btnLogin = (Button) findViewById(R.id.btnlogin);
+        TextView txtEsquecerPass = (TextView) findViewById(R.id.txtEsquecerPassword), txtConta = (TextView) findViewById(R.id.txtConta);
+        EditText txtusername = (EditText) findViewById(R.id.txtusername), txtpassword = (EditText) findViewById(R.id.txtpassword);
 
-        btnLogin.findViewById(R.id.loginbtn);
-        txtEsquecerPass.findViewById(R.id.txtEsquecerPassword);
-        txtConta.findViewById(R.id.txtConta);
-        txtusername.findViewById(R.id.txtusername);
-        txtpassword.findViewById(R.id.txtpassword);
 
         txtConta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+               Intent intent = new Intent(MainActivity.this, criarcontaActivity.class);
+               startActivity(intent);
             }
         });
 

@@ -18,7 +18,7 @@ public class criarcontaActivity extends AppCompatActivity {
         String [] TipoUser = new String[] {"Admin", "Trabalhador"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drop_down_item, TipoUser);
 
-        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.filled_exposed);
+        AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.filled_exposed);
         autoCompleteTextView.setAdapter(adapter);
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

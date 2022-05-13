@@ -54,8 +54,8 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtn"
+    <Button
+        android:id="@+id/btnlogin"
         android:layout_width="wrap_content"
         android:layout_height="63dp"
         android:layout_below="@id/txtpassword"
@@ -65,13 +65,13 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/design_default_color_secondary"
-        android:text="LOGIN" />
+        android:text="LOGIN"/>
 
     <TextView
         android:id="@+id/txtEsquecerPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/loginbtn"
+        android:layout_below="@id/btnlogin"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="17dp"

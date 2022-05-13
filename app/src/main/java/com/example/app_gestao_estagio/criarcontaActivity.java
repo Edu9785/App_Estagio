@@ -10,15 +10,18 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class criarcontaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String [] TipoUser = new String[] {"Admin", "Trabalhador"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drop_down_item, TipoUser);
-
         AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.filled_exposed);
+        ArrayList<String> listatipo = new ArrayList<>();
+        listatipo.add("Admin");
+        listatipo.add("Trabalhador");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.drop_down_item, listatipo);
         autoCompleteTextView.setAdapter(adapter);
 
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -92,6 +92,4 @@
         android:layout_marginBottom="20dp"
         android:text="Não têm conta?"
         android:textColor="@color/white" />
-
-
 </RelativeLayout>

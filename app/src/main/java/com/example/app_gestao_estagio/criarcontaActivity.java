@@ -3,18 +3,29 @@ package com.example.app_gestao_estagio;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class criarcontaActivity extends AppCompatActivity {
-
-    private Spinner spinner_Tipo;
-    private TipoAdapter tipoAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_criarconta);
-        spinner_Tipo = findViewById(R.id.spinner_Tipo);
-        tipoAdapter = new TipoAdapter(criarcontaActivity.this, valores.getTipoList());
-        spinner_Tipo.setAdapter(tipoAdapter);
+
+        String [] TipoUser = new String[] {"Admin", "Trabalhador"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.drop_down_item, TipoUser);
+
+        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.filled_exposed);
+        autoCompleteTextView.setAdapter(adapter);
+
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(criarcontaActivity.this, autoCompleteTextView.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

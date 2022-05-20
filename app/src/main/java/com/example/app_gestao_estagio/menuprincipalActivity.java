@@ -4,12 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class mudarpassActivity extends AppCompatActivity {
+public class menuprincipalActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mudarpass);
-        getSupportActionBar().hide();
+        setContentView(R.layout.activity_menuprincipal);
     }
 }

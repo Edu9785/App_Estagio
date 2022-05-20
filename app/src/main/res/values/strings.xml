@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">App_Gestao_Estagio</string>
+    <string-array name="Cargo">
+        <item>Admin</item>
+        <item>Trabalhador</item>
+    </string-array>
 </resources>

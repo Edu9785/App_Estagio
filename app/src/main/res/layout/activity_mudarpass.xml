@@ -78,12 +78,24 @@
         android:layout_height="63dp"
         android:layout_below="@id/txtconfpass1"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="40dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/design_default_color_secondary"
         android:text="MUDAR" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/voltarbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="63dp"
+        android:layout_below="@id/mudarbtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:text="VOLTAR" />
 
 </RelativeLayout>

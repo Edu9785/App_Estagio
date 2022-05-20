@@ -56,16 +56,28 @@
 
     <Button
         android:id="@+id/btnlogin"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="63dp"
         android:layout_below="@id/txtpassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/design_default_color_secondary"
-        android:text="LOGIN"/>
+        android:onClick="login"
+        android:text="LOGIN" />
+
+    <Button
+        android:id="@+id/btnSair"
+        android:layout_width="100dp"
+        android:layout_height="63dp"
+        android:layout_below="@id/txtpassword"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:text="SAIR" />
 
     <TextView
         android:id="@+id/txtEsquecerPassword"
@@ -74,7 +86,7 @@
         android:layout_below="@id/btnlogin"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:text="Esqueceu-se da password?"
@@ -87,9 +99,10 @@
         android:layout_below="@id/txtEsquecerPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:text="Não têm conta?"
         android:textColor="@color/white" />
+
 </RelativeLayout>

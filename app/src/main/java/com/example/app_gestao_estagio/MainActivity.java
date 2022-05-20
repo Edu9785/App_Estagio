@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText txtusername, txtpassword;
     private String user, password;
-    private String URL = "http://127.0.0.1/Gestao_Morebiz/login.php";
+    private String URL = "https://10.0.2.2/Gestao_Morebiz/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Toast.makeText(MainActivity.this, error.toString().trim(), Toast.LENGTH_SHORT).show();
+                    Log.d("erro", error.toString());
                 }
             }){
                 @Override

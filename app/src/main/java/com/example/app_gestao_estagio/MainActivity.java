@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText txtusername, txtpassword;
     private String user, password;
-    private String URL = "https://10.0.2.2/Gestao_Morebiz/login.php";
+    private String URL = "https://localhost/rc/Gestao_Morebiz/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                  startActivity(intent);
             }
         });
-
     }
 
     public void login(View view) {
@@ -68,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    if (response.equals("success")) {
+                    if(response.equals("success")) {
                         Intent intent = new Intent(MainActivity.this, menuprincipalActivity.class);
                         startActivity(intent);
                         finish();
-                    } else if (response.equals("failure")) {
+                    }else if (response.equals("failure")) {
                         Toast.makeText(MainActivity.this, "Algum dos campos está mal preenchido", Toast.LENGTH_SHORT).show();
                     }
                 }

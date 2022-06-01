@@ -1,8 +1,10 @@
 package com.example.app_gestao_estagio;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +22,18 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider;
 
 import org.w3c.dom.Text;
 
@@ -29,19 +43,21 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private EditText txtusername, txtpassword;
-    private String user, password;
-    private String URL = "https://localhost/rc/Gestao_Morebiz/login.php";
+    private FirebaseFirestore db;
+    private FirebaseAuth auth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        user = "";
-        password = "";
         TextView txtEsquecerPass = (TextView) findViewById(R.id.txtEsquecerPassword), txtConta = (TextView) findViewById(R.id.txtConta);
         txtusername = (EditText) findViewById(R.id.txtusername);
         txtpassword = (EditText) findViewById(R.id.txtpassword);
         getSupportActionBar().hide();
+        db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+        auth.getCurrentUser();
 
         txtConta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,41 +77,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        user = txtusername.getText().toString().trim();
-        password = txtpassword.getText().toString().trim();
-        if(!user.equals("") && !password.equals("")){
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    if(response.equals("success")) {
-                        Intent intent = new Intent(MainActivity.this, menuprincipalActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }else if (response.equals("failure")) {
-                        Toast.makeText(MainActivity.this, "Algum dos campos está mal preenchido", Toast.LENGTH_SHORT).show();
+        if(txtusername.getText().equals("") || txtpassword.getText().equals(""))
+        {
+            Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            VerificarUser(txtusername.getText().toString(), txtpassword.getText().toString());
+        }
+    }
+
+    public void VerificarUser(String User, String Password) {
+        auth.signInWithEmailAndPassword(User, Password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        FirebaseUser firebaseUser = auth.getCurrentUser();
+                        String user = firebaseUser.getEmail();
+                        Toast.makeText(MainActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
                     }
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(MainActivity.this, error.toString().trim(), Toast.LENGTH_SHORT).show();
-                    Log.d("erro", error.toString());
-                }
-            }){
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> data = new HashMap<>();
-                    data.put("user", user);
-                    data.put("password", password);
-                    return data;
-                }
-            };
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-            requestQueue.add(stringRequest);
-            }
-            else
-            {
-                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
-            }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this, "Algum dos campons esá mal inserido", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

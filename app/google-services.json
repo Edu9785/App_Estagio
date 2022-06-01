@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "467230883113",
-    "project_id": "app-gestao-estagio",
-    "storage_bucket": "app-gestao-estagio.appspot.com"
+    "project_number": "829523372103",
+    "project_id": "gestaomorebiz",
+    "storage_bucket": "gestaomorebiz.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:467230883113:android:ef39757a433e39f58d4b38",
+        "mobilesdk_app_id": "1:829523372103:android:b228e7f16157c08077e962",
         "android_client_info": {
-          "package_name": "com.example.appestagio"
+          "package_name": "com.example.app_gestao_estagio"
         }
       },
       "oauth_client": [
         {
-          "client_id": "467230883113-i68a8n6tklon7b04eabn1d5h29gsbe19.apps.googleusercontent.com",
+          "client_id": "829523372103-8ul5hnh7v2vtm7669nrfh5qframkdoh2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDo5ww5TSllfJZXILpbBsyq7UZxdWFz0yA"
+          "current_key": "AIzaSyA3fJYMb7Nqmz-YR_XqXv4DFG0la4OYfMU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "467230883113-i68a8n6tklon7b04eabn1d5h29gsbe19.apps.googleusercontent.com",
+              "client_id": "829523372103-8ul5hnh7v2vtm7669nrfh5qframkdoh2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

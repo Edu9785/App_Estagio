@@ -83,6 +83,7 @@
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/design_default_color_secondary"
+        android:onClick="mudar"
         android:text="MUDAR" />
 
     <com.google.android.material.button.MaterialButton
@@ -96,6 +97,7 @@
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/design_default_color_secondary"
+        android:onClick="voltar1"
         android:text="VOLTAR" />
 
 </RelativeLayout>

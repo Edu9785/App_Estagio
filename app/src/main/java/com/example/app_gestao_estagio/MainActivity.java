@@ -88,19 +88,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void VerificarUser(String User, String Password) {
-        auth.signInWithEmailAndPassword(User, Password)
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+        db.collection("Contas").whereEqualTo("User", User).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(AuthResult authResult) {
-                        FirebaseUser firebaseUser = auth.getCurrentUser();
-                        String user = firebaseUser.getEmail();
-                        Toast.makeText(MainActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        Log.i("TAG", "onComplete: vweefw1");
+
+                        if (task.getResult().isEmpty())
+                        {
+                            Toast.makeText(getApplicationContext(), "Utilizador não existe", Toast.LENGTH_LONG).show();
+                            Log.i("TAG", "onComplete: erro");
+                        }
+
+                        for (DocumentSnapshot snapshot : task.getResult()){
+
+                            Log.i("TAG", "onComplete: " + snapshot.getString("Password"));
+                            DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+
+                            if (snapshot.getString("Password").equals(Password)){
+                                Toast.makeText(getApplicationContext(), "Logado com sucesso", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(MainActivity.this, menuprincipalActivity.class);
+                                startActivity(intent);
+                                Log.i("TAG", "onComplete: vweefw");
+                            }else{
+                                Toast.makeText(getApplicationContext(), "Nome de utilizador ou password incorretos", Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
+                }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "Algum dos campons esá mal inserido", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Ligação Not ok", Toast.LENGTH_LONG).show();
                     }
                 });
     }

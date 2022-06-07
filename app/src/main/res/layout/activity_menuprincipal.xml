@@ -12,35 +12,24 @@
         android:id="@+id/TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="52dp"
         android:text="Bem vindo"
         android:textColor="@color/white"
         android:textSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtnomeUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:text=""
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/TextView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnFerramentas"
         android:layout_width="130dp"
         android:layout_height="100dp"
-        android:layout_marginStart="48dp"
         android:layout_marginTop="200dp"
         android:backgroundTint="@color/design_default_color_secondary"
         android:text="FERRAMENTAS"
         android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,11 +38,12 @@
         android:layout_width="130dp"
         android:layout_height="100dp"
         android:layout_marginTop="200dp"
-        android:layout_marginEnd="50dp"
         android:backgroundTint="@color/design_default_color_secondary"
         android:text="VEICULOS"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -62,9 +52,13 @@
         android:layout_height="60dp"
         android:layout_marginStart="152dp"
         android:layout_marginTop="392dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="81dp"
         android:backgroundTint="@color/design_default_color_secondary"
         android:text="SAIR"
         android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtLogout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,12 +66,16 @@
         android:id="@+id/txtLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="165dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="170dp"
-        android:text="Logut?"
-        android:textSize="25dp"
+        android:layout_marginBottom="165dp"
+        android:text="Logout?"
         android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSair" />
 
 

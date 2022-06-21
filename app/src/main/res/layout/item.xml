@@ -16,18 +16,20 @@
         android:layout_height="wrap_content"
         android:text="Ferramenta"
         android:textSize="20sp"
-        android:textColor="#000"
+        android:textColor="@color/white"
         android:padding="8dp"
-        android:id="@+id/txtNome_Ferramenta"/>
+        android:background="@color/black"
+        android:id="@+id/txtQuantidade_ferramenta"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Quantidade"
         android:textSize="15sp"
-        android:textColor="#000"
+        android:background="@color/black"
+        android:textColor="@color/white"
         android:padding="8dp"
-        android:id="@+id/txtQuantidade_Ferramenta"/>
+        android:id="@+id/txtNome_ferramenta"/>
 
     </LinearLayout>
 

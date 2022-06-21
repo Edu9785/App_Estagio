@@ -49,7 +49,7 @@ public class ferramentas_Atcivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 listFerramentas.clear();
                 for(DocumentSnapshot snapshot: task.getResult()){
-                    Model model = new Model(snapshot.getString("Nome_Ferramenta"), snapshot.getString("Quantidade_Ferramenta"));
+                    Model model = new Model(snapshot.getString("Nome_Ferramenta"), snapshot.getString("Quant_Ferramenta"));
                     listFerramentas.add(model);
                 }
                 adapter.notifyDataSetChanged();

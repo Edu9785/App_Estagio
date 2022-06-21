@@ -1,5 +1,8 @@
 package com.example.app_gestao_estagio;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.Nome.setText(ListFerramentas.get(position).getNome());
         holder.Quantidade.setText(ListFerramentas.get(position).getQuant());
+
     }
 
     @Override
@@ -37,14 +41,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-
         TextView Nome;
         TextView Quantidade;
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
-            Quantidade = itemView.findViewById(R.id.txtQuantidade_Ferramenta);
-            Nome = itemView.findViewById(R.id.txtNome_Ferramenta);
+            Nome = itemView.findViewById(R.id.txtNome_ferramenta);
+            Quantidade = itemView.findViewById(R.id.txtQuantidade_ferramenta);
         }
-
     }
 }

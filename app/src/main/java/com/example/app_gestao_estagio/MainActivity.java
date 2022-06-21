@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
         TextView txtEsquecerPass = (TextView) findViewById(R.id.txtEsquecerPassword), txtConta = (TextView) findViewById(R.id.txtConta);
         txtusername = (EditText) findViewById(R.id.txtusername);
         txtpassword = (EditText) findViewById(R.id.txtpassword);
-        getSupportActionBar().hide();
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
         auth.getCurrentUser();

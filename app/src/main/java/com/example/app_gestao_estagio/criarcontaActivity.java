@@ -76,7 +76,6 @@ public class criarcontaActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 finish();
                             }
-
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

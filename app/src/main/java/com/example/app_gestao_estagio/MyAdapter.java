@@ -17,8 +17,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private List<Model> ListFerramentas;
 
+
     public MyAdapter(ferramentas_Atcivity ferramentas_atcivity, List<Model> ListFerramentas){
         this.ListFerramentas = ListFerramentas;
+    }
+
+    public void MudarActivity(){
+
     }
 
     @NonNull

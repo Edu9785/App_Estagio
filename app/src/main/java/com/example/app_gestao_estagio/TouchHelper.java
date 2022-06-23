@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TouchHelper extends ItemTouchHelper.SimpleCallback {
 
-    private MyAdapterRequesicoes adapter;
+    private MyAdapter adapter;
 
 
-    public TouchHelper(MyAdapterRequesicoes adapter) {
+    public TouchHelper(MyAdapter adapter) {
         super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
         this.adapter = adapter;
     }

@@ -14,15 +14,9 @@ import java.util.List;
 public class MyAdapterRequesicoes extends RecyclerView.Adapter<MyAdapterRequesicoes.MyViewHolder> {
 
     private List<Requesicoes> ListRequesicoes;
-    ferramentas_Atcivity activity;
 
     public MyAdapterRequesicoes(historicoFerramenta_Activity activity, List<Requesicoes> ListRequesicoes) {
         this.ListRequesicoes = ListRequesicoes;
-    }
-
-    public void MudarActivity(){
-        Intent intent = new Intent(activity, historicoFerramenta_Activity.class);
-        activity.startActivity(intent);
     }
 
     @NonNull

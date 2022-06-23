@@ -2,6 +2,7 @@ package com.example.app_gestao_estagio;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +41,11 @@ public class ferramentas_Atcivity extends AppCompatActivity {
         listFerramentas = new ArrayList<>();
         adapter = new MyAdapter(this, listFerramentas);
         recyclerView.setAdapter(adapter);
+
         ShowData();
+
+        ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter));
+        touchHelper.attachToRecyclerView(recyclerView);
     }
 
     private void ShowData(){

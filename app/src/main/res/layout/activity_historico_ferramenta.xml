@@ -8,7 +8,7 @@
     android:background="@drawable/img_2">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rc_Ferramentas"
+        android:id="@+id/rc_Requesicoes"
         android:layout_width="410dp"
         android:layout_height="639dp"
         android:layout_marginStart="1dp"

@@ -1,17 +1,19 @@
 package com.example.app_gestao_estagio;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TouchHelper extends ItemTouchHelper.SimpleCallback {
 
-    private MyAdapter adapter;
-
 
     public TouchHelper(MyAdapter adapter) {
-        super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
-        this.adapter = adapter;
+        super(0, ItemTouchHelper.LEFT);
     }
 
 
@@ -22,8 +24,15 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+        final int position = viewHolder.getAdapterPosition();
+        TextView txtnome;
+        txtnome = viewHolder.itemView.findViewById(R.id.lbquantidadeferramenta);
+        String nome = txtnome.getText().toString();
         if(direction == ItemTouchHelper.LEFT){
-            adapter.MudarActivity();
+            Intent intent = new Intent(viewHolder.itemView.getContext(), historicoFerramenta_Activity.class);
+            Log.i("lfe", "onSwipedWEEB: " + nome);
+            intent.putExtra("nome", nome);
+            viewHolder.itemView.getContext().startActivity(intent);
         }
     }
 }

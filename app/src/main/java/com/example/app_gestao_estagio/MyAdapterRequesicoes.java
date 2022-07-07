@@ -9,13 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapterRequesicoes extends RecyclerView.Adapter<MyAdapterRequesicoes.MyViewHolder> {
 
-    private List<Requesicoes> ListRequesicoes;
+    private ArrayList<Requesicoes> ListRequesicoes;
 
-    public MyAdapterRequesicoes(historicoFerramenta_Activity activity, List<Requesicoes> ListRequesicoes) {
+    public MyAdapterRequesicoes(ArrayList<Requesicoes> ListRequesicoes) {
         this.ListRequesicoes = ListRequesicoes;
     }
 
@@ -44,7 +45,7 @@ public class MyAdapterRequesicoes extends RecyclerView.Adapter<MyAdapterRequesic
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             Data_Requesicao = itemView.findViewById(R.id.txtRequesicao);
-            Data_Devolucao = itemView.findViewById(R.id.txtDevulocao);
+            Data_Devolucao = itemView.findViewById(R.id.txtDevolucao);
         }
     }
 }

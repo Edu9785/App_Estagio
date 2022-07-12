@@ -86,6 +86,9 @@ public class mudarpassActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void unused) {
                                     Toast.makeText(mudarpassActivity.this, "Palavra pass alterada com sucesso", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(mudarpassActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override

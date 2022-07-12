@@ -34,7 +34,6 @@
         android:drawablePadding="20dp"
         android:hint="User"
         android:padding="20dp"
-        android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
     <EditText
@@ -51,7 +50,6 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="20dp"
-        android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
     <Button

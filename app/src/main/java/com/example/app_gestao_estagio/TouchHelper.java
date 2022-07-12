@@ -26,7 +26,7 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
         final int position = viewHolder.getAdapterPosition();
         TextView txtnome;
-        txtnome = viewHolder.itemView.findViewById(R.id.lbquantidadeferramenta);
+        txtnome = viewHolder.itemView.findViewById(R.id.lbnomeferramenta);
         String nome = txtnome.getText().toString();
         if(direction == ItemTouchHelper.LEFT){
             Intent intent = new Intent(viewHolder.itemView.getContext(), historicoFerramenta_Activity.class);

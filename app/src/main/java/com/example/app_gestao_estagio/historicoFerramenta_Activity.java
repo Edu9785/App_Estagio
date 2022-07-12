@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,10 +30,44 @@ public class historicoFerramenta_Activity extends AppCompatActivity {
     private MyAdapterRequesicoes adapter;
     private ArrayList<Requesicoes> listRequesicoes;
 
+    public void buscarID(String nomeferramenta) {
+        db.collection("Ferramentas").whereEqualTo("Nome_Ferramenta", nomeferramenta).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if (task.getResult().isEmpty()) {
+                            Toast.makeText(getApplicationContext(), "Erro na busca do ID", Toast.LENGTH_LONG).show();
+                            Log.i("TAG", "onComplete: erro");
+                        }
+
+                        for (DocumentSnapshot snapshot : task.getResult()) {
+                            String ID = snapshot.getId();
+                            Intent Intent = new Intent(historicoFerramenta_Activity.this, requesitarFerramentaActivity.class);
+                            startActivity(Intent);
+                            finish();
+                            Intent.putExtra("ID", ID);
+                            Toast.makeText(historicoFerramenta_Activity.this, "ID " + ID, Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(), "Ligação Not ok", Toast.LENGTH_LONG).show();
+                    }
+                });
+        }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historico_ferramenta);
+        Button btnRequesitar, btnVoltar;
+
+        btnRequesitar = findViewById(R.id.btnRequesitar);
+        btnVoltar = findViewById(R.id.btnVoltar);
         listRequesicoes = new ArrayList<>();
         recyclerView = findViewById(R.id.rc_Requesicoes);
         recyclerView.setHasFixedSize(true);
@@ -42,10 +78,26 @@ public class historicoFerramenta_Activity extends AppCompatActivity {
         ShowData();
 
 
+        btnRequesitar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(historicoFerramenta_Activity.this, TouchHelper.class);
+                String nome = getIntent().getExtras().getString("nome");
+                if(nome != null) {
+                    buscarID(nome);
+                }
+            }
+        });
 
-
-
+        btnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(historicoFerramenta_Activity.this, ferramentas_Atcivity.class);
+                startActivity(intent);
+            }
+        });
     }
+
     private void ShowData(){
         Intent intent = new Intent(historicoFerramenta_Activity.this, TouchHelper.class);
         String nome = getIntent().getExtras().getString("nome");
@@ -84,8 +136,6 @@ public class historicoFerramenta_Activity extends AppCompatActivity {
                                             if (task.getResult().isEmpty())
                                             {
                                                 Toast.makeText(getApplicationContext(), "Não existe requisições nesta ferramenta", Toast.LENGTH_LONG).show();
-                                                Intent intent = new Intent(historicoFerramenta_Activity.this, ferramentas_Atcivity.class);
-                                                startActivity(intent);
                                             }
 
                                             for (DocumentSnapshot snapshot : task.getResult()){
@@ -114,5 +164,7 @@ public class historicoFerramenta_Activity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Ligação Not ok", Toast.LENGTH_LONG).show();
                     }
                 });
-    }
+        }
+
+
 }

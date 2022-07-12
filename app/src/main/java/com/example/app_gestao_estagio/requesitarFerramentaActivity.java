@@ -1,15 +1,81 @@
 package com.example.app_gestao_estagio;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.UUID;
 
 public class requesitarFerramentaActivity extends AppCompatActivity {
+    FirebaseFirestore db;
+    EditText txtData;
+    Button btnRequesitar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requesitar_ferramenta);
+        txtData = findViewById(R.id.txtdatarequesicao);
+        btnRequesitar = findViewById(R.id.btnRequesitar);
+        db = FirebaseFirestore.getInstance();
+
+        btnRequesitar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requesitarFerramentaActivity.this, historicoFerramenta_Activity.class);
+                String ID = getIntent().getExtras().getString("ID");
+                Log.i("TAG", "Show data " + ID);
+                if(ID != null){
+                    requesitarFerramenta(ID, txtData.getText().toString());
+                }
+
+            }
+        });
+        }
+
+
+    private void requesitarFerramenta(String ID,String Data){
+        if (Data.equals("")){
+            Toast.makeText(getApplicationContext(), "Preencha o campo", Toast.LENGTH_LONG).show();
+        }else
+        {
+            HashMap<String, Object> requesicao = new HashMap<>();
+            requesicao.put("Data_Requesição", Data);
+            requesicao.put("Ferramenta_ID", ID);
+
+            db.collection("Requesicoes").document(ID).set(requesicao)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if (task.isSuccessful()) {
+                                Toast.makeText(requesitarFerramentaActivity.this, "Ferramentas requesitada com sucesso" , Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(requesitarFerramentaActivity.this, historicoFerramenta_Activity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(requesitarFerramentaActivity.this, "Failed", Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
 
     }
 }

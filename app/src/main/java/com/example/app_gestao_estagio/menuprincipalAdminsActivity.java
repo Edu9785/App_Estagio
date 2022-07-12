@@ -6,29 +6,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class menuprincipalActivity extends AppCompatActivity {
+public class menuprincipalAdminsActivity extends AppCompatActivity {
 
     TextView txtLogout;
     Button btnFerramentas, btnVeiculos, btnSair;
-    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_menuprincipal);
+        setContentView(R.layout.activity_menuprincipal_admins);
 
         txtLogout = (TextView) findViewById(R.id.txtLogout);
         btnFerramentas = (Button) findViewById(R.id.btnFerramentas);
         btnVeiculos = (Button) findViewById(R.id.btnVeiculos);
         btnSair = (Button) findViewById(R.id.btnSair);
-        db = FirebaseFirestore.getInstance();
 
 
         btnSair.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +37,7 @@ public class menuprincipalActivity extends AppCompatActivity {
         btnFerramentas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(menuprincipalActivity.this, ferramentas_Atcivity.class);
+                Intent intent = new Intent(menuprincipalAdminsActivity.this, ferramentas_Atcivity.class);
                 startActivity(intent);
             }
         });
@@ -49,7 +45,7 @@ public class menuprincipalActivity extends AppCompatActivity {
         btnVeiculos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(menuprincipalActivity.this, "Conteudo em breve", Toast.LENGTH_SHORT).show();
+                Toast.makeText(menuprincipalAdminsActivity.this, "Conteudo em breve", Toast.LENGTH_SHORT).show();
             }
         });
     }

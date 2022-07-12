@@ -2,7 +2,6 @@ package com.example.app_gestao_estagio;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,9 +20,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class historicoFerramenta_Activity extends AppCompatActivity {
+public class historicoFerramenta_AdminAcivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private FirebaseFirestore db;
@@ -43,9 +41,9 @@ public class historicoFerramenta_Activity extends AppCompatActivity {
 
                         for (DocumentSnapshot snapshot : task.getResult()) {
                             String ID = snapshot.getId();
-                            Intent Intent = new Intent(historicoFerramenta_Activity.this, requesitarFerramentaActivity.class);
+                            Intent Intent = new Intent(historicoFerramenta_AdminAcivity.this, requesitarFerramentaActivity.class);
                             Intent.putExtra("ID", ID);
-                            Toast.makeText(historicoFerramenta_Activity.this, "ID " + ID, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(historicoFerramenta_AdminAcivity.this, "ID " + ID, Toast.LENGTH_SHORT).show();
                             startActivity(Intent);
                             finish();
                         }
@@ -57,7 +55,7 @@ public class historicoFerramenta_Activity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Ligação Not ok", Toast.LENGTH_LONG).show();
                     }
                 });
-        }
+    }
 
 
     @Override
@@ -81,7 +79,7 @@ public class historicoFerramenta_Activity extends AppCompatActivity {
         btnRequesitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(historicoFerramenta_Activity.this, TouchHelper.class);
+                Intent intent = new Intent(historicoFerramenta_AdminAcivity.this, TouchHelper.class);
                 String nome = getIntent().getExtras().getString("nome");
                 if(nome != null) {
                     buscarID(nome);
@@ -92,14 +90,14 @@ public class historicoFerramenta_Activity extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(historicoFerramenta_Activity.this, ferramentas_Atcivity.class);
+                Intent intent = new Intent(historicoFerramenta_AdminAcivity.this, ferramentas_Atcivity.class);
                 startActivity(intent);
             }
         });
     }
 
     private void ShowData(){
-        Intent intent = new Intent(historicoFerramenta_Activity.this, TouchHelper.class);
+        Intent intent = new Intent(historicoFerramenta_AdminAcivity.this, TouchHelper.class);
         String nome = getIntent().getExtras().getString("nome");
         Log.i("TAG", "ShowData: " + nome);
         if(nome != null){
@@ -162,7 +160,5 @@ public class historicoFerramenta_Activity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Ligação Not ok", Toast.LENGTH_LONG).show();
                     }
                 });
-        }
-
-
+    }
 }

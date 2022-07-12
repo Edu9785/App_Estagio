@@ -105,9 +105,17 @@ public class MainActivity extends AppCompatActivity {
                             DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
 
                             if (snapshot.getString("Password").equals(Password)){
-                                Toast.makeText(getApplicationContext(), "Logado com sucesso", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(MainActivity.this, menuprincipalActivity.class);
-                                startActivity(intent);
+                                if(snapshot.getString("Cargo").equals("Admin")) {
+                                    Toast.makeText(MainActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(MainActivity.this, menuprincipalAdminsActivity.class);
+                                    startActivity(intent);
+                                }
+                                else
+                                {
+                                    Toast.makeText(getApplicationContext(), "Logado com sucesso", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(MainActivity.this, menuprincipalActivity.class);
+                                    startActivity(intent);
+                                }
                                 Log.i("TAG", "onComplete: vweefw");
                             }else{
                                 Toast.makeText(getApplicationContext(), "Nome de utilizador ou password incorretos", Toast.LENGTH_LONG).show();

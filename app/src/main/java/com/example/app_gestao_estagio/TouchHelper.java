@@ -11,11 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TouchHelper extends ItemTouchHelper.SimpleCallback {
 
+    String ID;
 
     public TouchHelper(MyAdapter adapter) {
         super(0, ItemTouchHelper.LEFT);
+
     }
 
+    public void setID(String cargo) {
+        this.ID = ID;
+    }
 
     @Override
     public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -32,6 +37,7 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
             Intent intent = new Intent(viewHolder.itemView.getContext(), historicoFerramenta_Activity.class);
             Log.i("lfe", "onSwipedWEEB: " + nome);
             intent.putExtra("nome", nome);
+
             viewHolder.itemView.getContext().startActivity(intent);
         }
     }

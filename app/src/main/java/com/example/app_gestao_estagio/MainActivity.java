@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtusername, txtpassword;
     private FirebaseFirestore db;
     private FirebaseAuth auth;
-
+    private String cargo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,19 +105,24 @@ public class MainActivity extends AppCompatActivity {
                             DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
 
                             if (snapshot.getString("Password").equals(Password)){
-                                if(snapshot.getString("Cargo").equals("Admin")) {
-                                    Toast.makeText(MainActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(MainActivity.this, menuprincipalAdminsActivity.class);
-                                    startActivity(intent);
-                                }
-                                else
-                                {
-                                    Toast.makeText(getApplicationContext(), "Logado com sucesso", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(MainActivity.this, menuprincipalActivity.class);
-                                    startActivity(intent);
-                                }
-                                Log.i("TAG", "onComplete: vweefw");
-                            }else{
+
+                                String ID = snapshot.getId();
+                                String cargo = snapshot.getString("Cargo");
+                                db.collection("Contas").document(ID).update("Logado", 1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        actfunctstart(cargo, ID);
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.i("TAG", "onComplete: update error");
+                                    }
+                                });
+
+                            }
+                            else
+                            {
                                 Toast.makeText(getApplicationContext(), "Nome de utilizador ou password incorretos", Toast.LENGTH_LONG).show();
                             }
 
@@ -131,4 +136,19 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
+             private void actfunctstart(String cargo, String ID){
+                if (cargo.equals("Admin")){
+                    Toast.makeText(MainActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, menuprincipalAdminsActivity.class);
+                    intent.putExtra("id", ID);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(MainActivity.this, "Logado com sucesso", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, menuprincipalActivity.class);
+                    intent.putExtra("id", ID);
+                    startActivity(intent);
+                }
+
+             }
 }

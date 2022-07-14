@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRequesitar"
+        android:id="@+id/btnDevolver"
         android:layout_width="110dp"
         android:layout_height="65dp"
         android:layout_marginTop="40dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rc_Requesicoes" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnVoltar"
+        android:id="@+id/btnVoltarDevolver"
         android:layout_width="110dp"
         android:layout_height="65dp"
         android:layout_marginStart="40dp"

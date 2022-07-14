@@ -9,7 +9,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="47dp"
         android:backgroundTint="@color/colorSpinner"
         android:text="Data da requisição:"
@@ -22,7 +22,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="65dp"
+        android:layout_marginStart="45dp"
         android:layout_marginBottom="53dp"
         android:backgroundTint="@color/colorSpinner"
         android:text="Data da devolução:"
@@ -57,4 +57,15 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView4" />
+
+    <ImageButton
+        android:id="@+id/btndevolucao"
+        android:layout_width="35dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/iconscanetaldpixxxhdpi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

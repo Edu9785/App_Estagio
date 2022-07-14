@@ -64,8 +64,8 @@ public class historicoFerramenta_AdminAcivity extends AppCompatActivity {
         setContentView(R.layout.activity_historico_ferramenta);
         Button btnRequesitar, btnVoltar;
 
-        btnRequesitar = findViewById(R.id.btnRequesitar);
-        btnVoltar = findViewById(R.id.btnVoltar);
+        btnRequesitar = findViewById(R.id.btnDevolver);
+        btnVoltar = findViewById(R.id.btnVoltarDevolver);
         listRequesicoes = new ArrayList<>();
         recyclerView = findViewById(R.id.rc_Requesicoes);
         recyclerView.setHasFixedSize(true);
@@ -121,7 +121,6 @@ public class historicoFerramenta_AdminAcivity extends AppCompatActivity {
 
                         for (DocumentSnapshot snapshot : task.getResult()){
 
-                            Log.i("TAG", "oni-cha " + snapshot.getId());
 
                             String ID = snapshot.getId();
 

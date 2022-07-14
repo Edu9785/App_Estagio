@@ -64,6 +64,7 @@ public class criarcontaActivity extends AppCompatActivity {
             conta.put("Email", email);
             conta.put("Password", password);
             conta.put("Cargo", cargo);
+            conta.put("Logado", 0);
 
             db.collection("Contas").document(ID).set(conta)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {

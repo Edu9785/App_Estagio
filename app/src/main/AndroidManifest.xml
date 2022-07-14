@@ -14,6 +14,9 @@
         android:theme="@style/Theme.App_Gestao_Estagio"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".devolucaoFerramentaAcivity"
+            android:exported="false" />
+        <activity
             android:name=".historicoFerramenta_AdminAcivity"
             android:exported="false" />
         <activity

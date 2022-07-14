@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,15 @@ public class MyAdapterRequesicoes extends RecyclerView.Adapter<MyAdapterRequesic
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.Data_Requesicao.setText(ListRequesicoes.get(position).Data_Requesicao);
         holder.Data_Devolucao.setText(ListRequesicoes.get(position).Data_Devolucao);
+        holder.btndevolucao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), devolucaoFerramentaAcivity.class);
+
+                view.getContext().startActivity(intent);
+
+            }
+        });
     }
 
     @Override
@@ -41,11 +51,12 @@ public class MyAdapterRequesicoes extends RecyclerView.Adapter<MyAdapterRequesic
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView Data_Requesicao;
         TextView Data_Devolucao;
-
+        ImageButton btndevolucao;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             Data_Requesicao = itemView.findViewById(R.id.txtRequesicao);
             Data_Devolucao = itemView.findViewById(R.id.txtDevolucao);
+            btndevolucao = itemView.findViewById(R.id.btndevolucao);
         }
     }
 }

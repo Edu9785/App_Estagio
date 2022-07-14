@@ -13,7 +13,7 @@
         android:layout_height="38dp"
         android:layout_marginTop="64dp"
         android:gravity="center"
-        android:text="Requesitar Ferramenta"
+        android:text="Devolução Ferramenta"
         android:textColor="@color/white"
         android:textSize="28dp"
         android:textStyle="bold"
@@ -30,7 +30,7 @@
         android:layout_marginEnd="10dp"
         android:background="#30ffffff"
         android:drawablePadding="20dp"
-        android:hint="Data Requesição"
+        android:hint="Data Devolução"
         android:inputType="date"
         android:padding="20dp"
         android:textColorHint="@color/white"
@@ -44,7 +44,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="80dp"
         android:backgroundTint="@color/design_default_color_secondary"
-        android:text="Requesitar"
+        android:text="Devolver"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtdatadevolucao" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnVoltarRequesitar"
+        android:id="@+id/btnVoltarDevolver"
         android:layout_width="142dp"
         android:layout_height="60dp"
         android:layout_marginStart="40dp"

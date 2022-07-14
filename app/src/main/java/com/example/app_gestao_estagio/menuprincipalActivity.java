@@ -1,5 +1,6 @@
 package com.example.app_gestao_estagio;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class menuprincipalActivity extends AppCompatActivity {
@@ -29,6 +32,23 @@ public class menuprincipalActivity extends AppCompatActivity {
         btnVeiculos = (Button) findViewById(R.id.btnVeiculos);
         btnSair = (Button) findViewById(R.id.btnSair);
         db = FirebaseFirestore.getInstance();
+
+        Intent intent = new Intent(menuprincipalActivity.this, MainActivity.class);
+        String ID = intent.getExtras().getString("id");
+
+        txtLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.collection("Contas").document(ID).update("Logado", 0).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(menuprincipalActivity.this, "Deslogado com sucesso", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(menuprincipalActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
 
 
         btnSair.setOnClickListener(new View.OnClickListener() {

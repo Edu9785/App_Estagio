@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -43,6 +44,8 @@ public class ferramentas_AdminActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         ShowData();
+        Intent intent = new Intent(ferramentas_AdminActivity.this, menuprincipalAdminsActivity.class);
+        String ID = getIntent().getStringExtra("id");
 
         ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter));
         touchHelper.attachToRecyclerView(recyclerView);

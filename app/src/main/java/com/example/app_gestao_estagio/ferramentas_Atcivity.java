@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ public class ferramentas_Atcivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private MyAdapter adapter;
     private List<Model> listFerramentas;
-
+    private String cargo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,8 @@ public class ferramentas_Atcivity extends AppCompatActivity {
         adapter = new MyAdapter(this, listFerramentas);
         recyclerView.setAdapter(adapter);
 
+        Intent intent = new Intent(ferramentas_Atcivity.this, menuprincipalActivity.class);
+        cargo = getIntent().getStringExtra("cargo");
         ShowData();
 
         ItemTouchHelper touchHelper = new ItemTouchHelper(new TouchHelper(adapter));

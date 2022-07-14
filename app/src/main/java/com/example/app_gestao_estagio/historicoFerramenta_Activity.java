@@ -2,7 +2,6 @@ package com.example.app_gestao_estagio;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,7 +20,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class historicoFerramenta_Activity extends AppCompatActivity {
 
@@ -45,11 +43,9 @@ public class historicoFerramenta_Activity extends AppCompatActivity {
                             String ID = snapshot.getId();
                             Intent Intent = new Intent(historicoFerramenta_Activity.this, requesitarFerramentaActivity.class);
                             Intent.putExtra("ID", ID);
-                            Toast.makeText(historicoFerramenta_Activity.this, "ID " + ID, Toast.LENGTH_SHORT).show();
                             startActivity(Intent);
                             finish();
                         }
-
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -66,8 +62,8 @@ public class historicoFerramenta_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_historico_ferramenta);
         Button btnRequesitar, btnVoltar;
 
-        btnRequesitar = findViewById(R.id.btnRequesitar);
-        btnVoltar = findViewById(R.id.btnVoltar);
+        btnRequesitar = findViewById(R.id.btnDevolver);
+        btnVoltar = findViewById(R.id.btnVoltarDevolver);
         listRequesicoes = new ArrayList<>();
         recyclerView = findViewById(R.id.rc_Requesicoes);
         recyclerView.setHasFixedSize(true);
